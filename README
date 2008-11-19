@@ -1,4 +1,48 @@
-SafeRecord
-==========
+= SafeRecord
 
-Description goes here
+== Overview
+The Safe Record check SQL escape. (using "taint")
+When a tainted object is included in SQL, an exception occurs.
+When every DBMS adaptors quoting is called, this plugin "untaints" the string.
+This will significantly reduce the possibility of SQL injection into your web application.
+
+This starts only in ((*production*)) environment.
+
+== Example
+
+  # raise exception!!
+  post = Post.find(:first,
+    :conditions => "title = '#{params[:title]}'")
+
+  # OK :)
+  post = Post.find(:first,
+    :conditions => [
+      "title = ?",
+      params[:title]
+    ])
+
+  # Good :)
+  post = Post.find_by_title(params[:title])
+
+== Installation
+This plugin depens on "safe_erb". (The safe_erb is rails plugin)
+((<URL|http://wiki.rubyonrails.com/rails/pages/Safe+ERB>))
+
+Appearing below is install step.
+(1) install safe_erb
+(2) install safe_record
+
+  $ script/plugin install http://safe-erb.rubyforge.org/svn/plugins/safe_erb/
+  $ script/plugin install git://github.com/authorNari/safe_record.git
+
+== Author
+Shugo Maeda
+
+== Maintainer
+Narihiro Nakamura
+
+== Special Thanks
+Shinya Kasatani(safe_erb author)
+
+== Contact
+Narihiro Nakamura <authorNari at gmail.com>

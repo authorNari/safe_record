@@ -28,3 +28,8 @@ module ActiveRecord
     end
   end
 end
+
+# Adhock patching
+if Rails::VERSION::MAJOR >= 2
+  require 'adhock/rails_2'
+end
