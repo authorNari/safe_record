@@ -3,7 +3,7 @@
 == Overview
 
 Safe Record is a Rails plugin to detect potential SQL injection
-vulenerabilities with the taint mechanism of Ruby.  It will raise an
+vulnerabilities with the taint mechanism of Ruby.  It will raise an
 exception when a tainted string is passed as SQL.
 
 Safe Record is experimental, so do NOT use in a production environment.
